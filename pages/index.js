@@ -8,8 +8,14 @@ export default function Home() {
   const [max, setMax] = useState(0);
 
   const randomInteger = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    let randomNumber = Math.round(Math.random() * max);
+    while (randomNumber < min) {
+      randomNumber = Math.round(Math.random() * max);
+    }
+    return randomNumber
   };
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setRandomNum(randomInteger(min, max));
